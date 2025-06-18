@@ -1,0 +1,24 @@
+version: '3'
+services:
+  node-app:
+    image: my-node-app
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=khaideptrai714
+      - DB_NAME=test
+
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=khaideptrai714
+      - POSTGRES_DB=test
+    ports:
+      - "5432:5432"
